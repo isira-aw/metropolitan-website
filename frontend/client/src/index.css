@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  /* Metropolitan Color Palette */
-  --primary: 223 61% 36%; /* #244494 - Metropolitan Blue */
+  /* Metropolitan Color Palette - SWAPPED: Red is now Primary, Blue is now Accent */
+  --primary: 353 68% 40%; /* #ab202f - Metropolitan Red (was Blue) */
   --primary-foreground: 0 0% 100%;
 
   --secondary: 120 4% 34%; /* #535a53 - Gray */
@@ -26,7 +26,7 @@
   --popover-foreground: 120 4% 20%; /* Dark gray text on popovers */
   --popover-border: 120 4% 85%; /* Light gray popover border */
 
-  --accent: 353 68% 40%; /* #ab202f - Metropolitan Red */
+  --accent: 223 61% 36%; /* #244494 - Metropolitan Blue (was Red) */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 353 68% 40%; /* #ab202f - Red for errors */
@@ -34,7 +34,7 @@
 
   --border: 120 4% 85%;
   --input: 120 4% 92%;
-  --ring: 223 61% 36%;
+  --ring: 353 68% 40%; /* Red to match primary */
 
   --radius: 0.5rem;
 
