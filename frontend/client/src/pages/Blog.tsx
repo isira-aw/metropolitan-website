@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ArrowRight, UserCircle2 } from "lucide-react";
+import { UserCircle2 } from "lucide-react";
 
 export default function Blog() {
   const { data: studies, isLoading } = useCaseStudies();
@@ -48,22 +48,19 @@ export default function Blog() {
                    </div>
                  </div>
                  <div className="p-6 flex flex-col flex-grow">
-                   <h3 className="text-xl font-bold font-heading mb-3 group-hover:text-primary transition-colors">
+                   <h3 className="text-xl font-bold font-heading mb-3">
                      {study.title}
                    </h3>
                    <p className="text-muted-foreground text-sm mb-6 flex-grow">{study.summary}</p>
-                   
+
                    <div className="pt-6 border-t mt-auto">
-                     <div className="flex items-center gap-3 mb-4">
+                     <div className="flex items-center gap-3">
                        <UserCircle2 className="h-8 w-8 text-muted-foreground" />
                        <div className="text-xs">
                          <p className="font-bold text-foreground">Project Lead</p>
                          <p className="text-muted-foreground">{study.projectManagerName || 'Metropolitan Team'}</p>
                        </div>
                      </div>
-                     <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white transition-colors">
-                       View Case Study
-                     </Button>
                    </div>
                  </div>
                </Card>

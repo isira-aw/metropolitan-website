@@ -2,12 +2,10 @@ import { useNews } from "@/hooks/use-content";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Calendar, Phone, Mail, ArrowRight } from "lucide-react";
+import { Calendar, Phone, Mail } from "lucide-react";
 import { format } from "date-fns";
-import { Link } from "wouter";
 
 export default function News() {
   const { data: newsItems, isLoading } = useNews();
@@ -54,14 +52,11 @@ export default function News() {
                         {item.publishedAt ? format(new Date(item.publishedAt), 'MMM d, yyyy') : 'Recent'}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold font-heading mb-2 hover:text-primary transition-colors">
-                      <Link href={`/news/${item.id}`}>{item.title}</Link>
+                    <h3 className="text-xl font-bold font-heading mb-2">
+                      {item.title}
                     </h3>
-                    <p className="text-muted-foreground line-clamp-2">{item.summary}</p>
+                    <p className="text-muted-foreground">{item.summary}</p>
                   </div>
-                  <Button variant="link" asChild className="p-0 h-auto mt-4 self-start font-semibold">
-                    <Link href={`/news/${item.id}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                  </Button>
                 </div>
               </div>
             </Card>
