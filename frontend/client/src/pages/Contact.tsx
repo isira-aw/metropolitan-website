@@ -36,7 +36,7 @@ export default function Contact() {
           
           <div className="space-y-8">
             <Card className="p-6 space-y-4 border-l-4 border-l-primary">
-              <h3 className="font-heading font-bold text-lg">Headquarters</h3>
+              <h3 className="font-heading font-bold text-lg text-accent">Headquarters</h3>
               <div className="flex gap-3 text-muted-foreground">
                 <MapPin className="h-5 w-5 text-primary shrink-0" />
                 <p>123 Corporate Blvd, Suite 500<br />Metropolis City, MC 10001</p>
@@ -44,7 +44,7 @@ export default function Contact() {
             </Card>
 
             <Card className="p-6 space-y-4 border-l-4 border-l-primary">
-              <h3 className="font-heading font-bold text-lg">Contact Info</h3>
+              <h3 className="font-heading font-bold text-lg text-accent">Contact Info</h3>
               <div className="space-y-3 text-muted-foreground">
                 <div className="flex gap-3">
                    <Phone className="h-5 w-5 text-primary shrink-0" />
@@ -58,7 +58,7 @@ export default function Contact() {
             </Card>
 
             <Card className="p-6 space-y-4 border-l-4 border-l-primary">
-              <h3 className="font-heading font-bold text-lg">Business Hours</h3>
+              <h3 className="font-heading font-bold text-lg text-accent">Business Hours</h3>
               <div className="flex gap-3 text-muted-foreground">
                 <Clock className="h-5 w-5 text-primary shrink-0" />
                 <div>
@@ -70,7 +70,7 @@ export default function Contact() {
           </div>
 
           <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg border border-border">
-            <h3 className="text-2xl font-bold font-heading mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold font-heading mb-6 text-accent">Send us a Message</h3>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">

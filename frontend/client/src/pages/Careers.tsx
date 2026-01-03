@@ -33,7 +33,7 @@ export default function Careers() {
 
       <div className="container-padding py-16 grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 space-y-6">
-          <h2 className="text-2xl font-bold font-heading mb-6">Open Positions</h2>
+          <h2 className="text-2xl font-bold font-heading mb-6 text-accent">Open Positions</h2>
           {isLoading ? (
             <p className="text-muted-foreground">Loading positions...</p>
           ) : (
@@ -49,7 +49,7 @@ export default function Careers() {
         {/* HR Sidebar */}
         <div className="space-y-8">
            <div className="bg-white p-6 rounded-xl border shadow-sm sticky top-24">
-             <h3 className="text-xl font-bold font-heading mb-4 flex items-center gap-2">
+             <h3 className="text-xl font-bold font-heading mb-4 flex items-center gap-2 text-accent">
                <User className="h-5 w-5 text-primary" /> HR Contact
              </h3>
              <p className="text-muted-foreground mb-6 text-sm">

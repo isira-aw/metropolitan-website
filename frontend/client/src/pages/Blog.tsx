@@ -48,7 +48,7 @@ export default function Blog() {
                    </div>
                  </div>
                  <div className="p-6 flex flex-col flex-grow">
-                   <h3 className="text-xl font-bold font-heading mb-3">
+                   <h3 className="text-xl font-bold font-heading mb-3 text-accent">
                      {study.title}
                    </h3>
                    <p className="text-muted-foreground text-sm mb-6 flex-grow">{study.summary}</p>
@@ -71,7 +71,7 @@ export default function Blog() {
 
       <div className="bg-secondary/30 py-20 text-center">
         <div className="container-padding">
-          <h2 className="text-2xl font-bold font-heading mb-6">Explore More</h2>
+          <h2 className="text-2xl font-bold font-heading mb-6 text-accent">Explore More</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             Our portfolio extends across seven major divisions and three continents. Discover how our diverse expertise comes together.
           </p>
