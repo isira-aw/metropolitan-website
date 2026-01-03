@@ -71,7 +71,7 @@ export default function Division() {
                 <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6">
                   <Icon name={service.icon} className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 font-heading">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-3 font-heading text-accent">{service.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
@@ -152,7 +152,7 @@ export default function Division() {
       {/* Specific Contact */}
       <section id="contact" className="py-24 bg-accent text-white text-center">
         <div className="container-padding max-w-2xl">
-           <h2 className="text-3xl font-bold font-heading mb-6">Partner with {division.name}</h2>
+           <h2 className="text-3xl font-bold font-heading mb-6 text-white">Partner with {division.name}</h2>
            <p className="text-xl text-white/80 mb-8">
              Have a project in mind? Our specialized team is ready to deliver tailored solutions for your needs.
            </p>

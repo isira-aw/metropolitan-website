@@ -52,7 +52,7 @@ export default function News() {
                         {item.publishedAt ? format(new Date(item.publishedAt), 'MMM d, yyyy') : 'Recent'}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold font-heading mb-2">
+                    <h3 className="text-xl font-bold font-heading mb-2 text-accent">
                       {item.title}
                     </h3>
                     <p className="text-muted-foreground">{item.summary}</p>
@@ -66,7 +66,7 @@ export default function News() {
         {/* Sidebar */}
         <div className="space-y-8">
           <div className="bg-secondary/50 p-6 rounded-xl border border-border">
-            <h3 className="text-xl font-bold font-heading mb-4">Media Contacts</h3>
+            <h3 className="text-xl font-bold font-heading mb-4 text-accent">Media Contacts</h3>
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3">
                 <div className="bg-primary/10 p-2 rounded-full text-primary"><Phone className="h-4 w-4" /></div>
@@ -86,7 +86,7 @@ export default function News() {
           </div>
 
           <div className="bg-accent text-white p-6 rounded-xl">
-             <h3 className="text-xl font-bold font-heading mb-4">Division Contacts</h3>
+             <h3 className="text-xl font-bold font-heading mb-4 text-white">Division Contacts</h3>
              <ul className="space-y-3 text-sm text-white/80">
                <li className="border-b border-white/10 pb-2">
                  <strong className="block text-white">Infrastructure</strong>
