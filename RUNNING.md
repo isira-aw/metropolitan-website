@@ -37,6 +37,15 @@ export DB_USERNAME="postgres"
 export DB_PASSWORD="your_password"
 ```
 
+**Important:** The database tables will be **automatically created** on first run! Spring Boot JPA will:
+- Create all required tables based on entity definitions
+- Automatically populate seed data from `data.sql` including:
+  - 4 Divisions (Construction, Real Estate, Engineering, Architecture)
+  - 16 Services across all divisions
+  - Sample testimonials, projects, partners, news, case studies, and job openings
+
+No manual SQL scripts needed - just create an empty database and run the application!
+
 ### 2. Backend Setup
 
 ```bash
