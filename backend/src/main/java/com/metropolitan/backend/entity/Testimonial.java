@@ -15,8 +15,8 @@ public class Testimonial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "division_id")
-    private Long divisionId;
+    @Column(name = "subdivision_slug")
+    private String subdivisionSlug;
 
     @Column(name = "client_name", nullable = false)
     private String clientName;

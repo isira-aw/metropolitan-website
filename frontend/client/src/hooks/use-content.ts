@@ -53,7 +53,22 @@ export function useCaseStudy(id: number) {
   });
 }
 
-// DIVISIONS
+// SUBDIVISIONS
+export function useSubdivisionBySlug(slug: string) {
+  return useQuery({
+    queryKey: [api.subdivisions.getBySlug.path, slug],
+    queryFn: async () => {
+      const url = buildUrl(api.subdivisions.getBySlug.path, { slug });
+      const res = await fetch(url);
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error('Failed to fetch subdivision data');
+      return api.subdivisions.getBySlug.responses[200].parse(await res.json());
+    },
+    enabled: !!slug,
+  });
+}
+
+// DIVISIONS (deprecated - kept for backwards compatibility)
 export function useDivisions() {
   return useQuery({
     queryKey: [api.divisions.list.path],

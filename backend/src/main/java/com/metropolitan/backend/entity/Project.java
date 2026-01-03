@@ -15,8 +15,8 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "division_id", nullable = false)
-    private Long divisionId;
+    @Column(name = "subdivision_slug", nullable = false)
+    private String subdivisionSlug;
 
     @Column(nullable = false)
     private String title;

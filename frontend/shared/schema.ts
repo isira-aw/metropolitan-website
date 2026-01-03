@@ -70,38 +70,38 @@ export const divisions = pgTable("divisions", {
   heroImageUrl: text("hero_image_url"),
 });
 
-// Division Content - Services
+// Subdivision Content - Services
 export const services = pgTable("services", {
   id: serial("id").primaryKey(),
-  divisionId: integer("division_id").references(() => divisions.id).notNull(),
+  subdivisionSlug: text("subdivision_slug").notNull(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   icon: text("icon").notNull(), // Lucide icon name
 });
 
-// Division Content - Testimonials
+// Subdivision Content - Testimonials
 export const testimonials = pgTable("testimonials", {
   id: serial("id").primaryKey(),
-  divisionId: integer("division_id").references(() => divisions.id), // Nullable if global
+  subdivisionSlug: text("subdivision_slug"), // Nullable if global
   clientName: text("client_name").notNull(),
   company: text("company"),
   content: text("content").notNull(),
   rating: integer("rating").default(5),
 });
 
-// Division Content - Projects/Portfolio
+// Subdivision Content - Projects/Portfolio
 export const projects = pgTable("projects", {
   id: serial("id").primaryKey(),
-  divisionId: integer("division_id").references(() => divisions.id).notNull(),
+  subdivisionSlug: text("subdivision_slug").notNull(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   imageUrl: text("image_url"),
 });
 
-// Division Content - Partners
+// Subdivision Content - Partners
 export const partners = pgTable("partners", {
   id: serial("id").primaryKey(),
-  divisionId: integer("division_id").references(() => divisions.id), // Nullable if global
+  subdivisionSlug: text("subdivision_slug"), // Nullable if global
   name: text("name").notNull(),
   logoUrl: text("logo_url"),
 });

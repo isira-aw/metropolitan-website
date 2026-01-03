@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ServiceRepository extends JpaRepository<Service, Long> {
-    List<Service> findByDivisionId(Long divisionId);
+    List<Service> findBySubdivisionSlug(String subdivisionSlug);
 }

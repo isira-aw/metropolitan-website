@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PartnerRepository extends JpaRepository<Partner, Long> {
-    List<Partner> findByDivisionId(Long divisionId);
+    List<Partner> findBySubdivisionSlug(String subdivisionSlug);
 }

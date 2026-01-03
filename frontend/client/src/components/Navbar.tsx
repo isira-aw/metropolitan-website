@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Building2, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { useDivisions } from "@/hooks/use-content";
+import { getAllSubdivisions } from "@/lib/subdivisions";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,7 @@ import {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
-  const { data: divisions } = useDivisions();
+  const subdivisions = getAllSubdivisions();
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -53,16 +53,16 @@ export function Navbar() {
             </Link>
           ))}
           
-          {/* Divisions Dropdown */}
+          {/* Services Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary outline-none">
-              Divisions <ChevronDown className="h-4 w-4" />
+              Services <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
-              {divisions?.map((division) => (
-                <DropdownMenuItem key={division.id} asChild>
-                  <Link href={`/divisions/${division.slug}`} className="w-full cursor-pointer">
-                    {division.name}
+              {subdivisions.map((subdivision) => (
+                <DropdownMenuItem key={subdivision.id} asChild>
+                  <Link href={`/divisions/${subdivision.slug}`} className="w-full cursor-pointer">
+                    {subdivision.name}
                   </Link>
                 </DropdownMenuItem>
               ))}
@@ -98,15 +98,15 @@ export function Navbar() {
               </Link>
             ))}
             <div className="border-t pt-4">
-              <p className="text-sm font-semibold text-muted-foreground mb-2 px-2">Divisions</p>
-              {divisions?.map((division) => (
-                <Link 
-                  key={division.id} 
-                  href={`/divisions/${division.slug}`}
+              <p className="text-sm font-semibold text-muted-foreground mb-2 px-2">Services</p>
+              {subdivisions.map((subdivision) => (
+                <Link
+                  key={subdivision.id}
+                  href={`/divisions/${subdivision.slug}`}
                   className="block text-sm p-2 hover:bg-secondary rounded-md"
                   onClick={() => setIsOpen(false)}
                 >
-                  {division.name}
+                  {subdivision.name}
                 </Link>
               ))}
             </div>

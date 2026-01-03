@@ -113,7 +113,24 @@ export const api = {
     },
   },
 
-  // --- Divisions ---
+  // --- Subdivisions (replacing divisions) ---
+  subdivisions: {
+    getBySlug: {
+      method: 'GET' as const,
+      path: '/api/subdivisions/:slug',
+      responses: {
+        200: z.object({
+          services: z.array(z.custom<typeof services.$inferSelect>()),
+          testimonials: z.array(z.custom<typeof testimonials.$inferSelect>()),
+          projects: z.array(z.custom<typeof projects.$inferSelect>()),
+          partners: z.array(z.custom<typeof partners.$inferSelect>()),
+        }),
+        404: errorSchemas.notFound,
+      },
+    },
+  },
+
+  // --- Divisions (deprecated, kept for backwards compatibility) ---
   divisions: {
     list: {
       method: 'GET' as const,

@@ -1,4 +1,4 @@
-import { useDivisionBySlug } from "@/hooks/use-content";
+import { useSubdivisionBySlug } from "@/hooks/use-content";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -8,16 +8,22 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import * as Icons from "lucide-react";
 import { motion } from "framer-motion";
+import { getSubdivisionBySlug } from "@/lib/subdivisions";
 
 export default function Division() {
   const [, params] = useRoute("/divisions/:slug");
   const slug = params?.slug || "";
-  const { data, isLoading } = useDivisionBySlug(slug);
 
-  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading division...</div>;
-  if (!data) return <div className="min-h-screen flex items-center justify-center">Division not found</div>;
+  // Get subdivision data from fixed list
+  const subdivision = getSubdivisionBySlug(slug);
 
-  const { division, services, testimonials, projects, partners } = data;
+  // Fetch related data from backend
+  const { data, isLoading } = useSubdivisionBySlug(slug);
+
+  if (!subdivision) return <div className="min-h-screen flex items-center justify-center">Subdivision not found</div>;
+  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading subdivision details...</div>;
+
+  const { services, testimonials, projects, partners } = data || { services: [], testimonials: [], projects: [], partners: [] };
 
   // Dynamic Icon Renderer
   const Icon = ({ name, className }: { name: string, className?: string }) => {
@@ -32,22 +38,22 @@ export default function Division() {
 
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-accent">
-        {division.heroImageUrl && (
+        {subdivision.heroImageUrl && (
           <div className="absolute inset-0 z-0 opacity-40">
-            <img src={division.heroImageUrl} alt={division.name} className="w-full h-full object-cover" />
+            <img src={subdivision.heroImageUrl} alt={subdivision.name} className="w-full h-full object-cover" />
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-accent via-accent/60 to-transparent z-10" />
-        
+
         <div className="container-padding relative z-20 text-center text-white max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur mb-6 text-sm font-bold tracking-wider uppercase">
-              Metropolitan Divisions
+              Metropolitan Services
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6">{division.name}</h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">{division.description}</p>
+            <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6">{subdivision.name}</h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">{subdivision.description}</p>
             <Button size="lg" className="bg-white text-accent hover:bg-white/90 font-bold" asChild>
-              <Link href="#contact">Contact This Division</Link>
+              <Link href="#contact">Contact This Department</Link>
             </Button>
           </motion.div>
         </div>
@@ -56,7 +62,7 @@ export default function Division() {
       {/* Services */}
       <section className="py-24 bg-background">
         <div className="container-padding">
-          <SectionHeader title="Our Specialized Services" subtitle={`Expert solutions provided by the ${division.name} division.`} />
+          <SectionHeader title="Our Specialized Services" subtitle={`Expert solutions provided by our ${subdivision.name} department.`} />
           
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, i) => (
@@ -152,7 +158,7 @@ export default function Division() {
       {/* Specific Contact */}
       <section id="contact" className="py-24 bg-accent text-white text-center">
         <div className="container-padding max-w-2xl">
-           <h2 className="text-3xl font-bold font-heading mb-6 text-white">Partner with {division.name}</h2>
+           <h2 className="text-3xl font-bold font-heading mb-6 text-white">Partner with {subdivision.name}</h2>
            <p className="text-xl text-white/80 mb-8">
              Have a project in mind? Our specialized team is ready to deliver tailored solutions for your needs.
            </p>

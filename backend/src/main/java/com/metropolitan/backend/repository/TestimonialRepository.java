@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TestimonialRepository extends JpaRepository<Testimonial, Long> {
-    List<Testimonial> findByDivisionId(Long divisionId);
+    List<Testimonial> findBySubdivisionSlug(String subdivisionSlug);
 }
