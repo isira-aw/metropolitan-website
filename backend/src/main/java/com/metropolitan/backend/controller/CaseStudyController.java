@@ -24,14 +24,21 @@ public class CaseStudyController {
     @GetMapping
     public ResponseEntity<?> getAllCaseStudies(
             @RequestParam(required = false) Integer page,
-            @RequestParam(required = false) Integer size) {
+            @RequestParam(required = false) Integer size,
+            @RequestParam(required = false) Long divisionId) {
 
         if (page != null || size != null) {
             int pageNum = page != null ? page : 0;
             int pageSize = size != null ? size : 10;
 
             Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.by("createdAt").descending());
-            Page<CaseStudy> caseStudyPage = caseStudyRepository.findAll(pageable);
+            Page<CaseStudy> caseStudyPage;
+
+            if (divisionId != null) {
+                caseStudyPage = caseStudyRepository.findByDivisionId(divisionId, pageable);
+            } else {
+                caseStudyPage = caseStudyRepository.findAll(pageable);
+            }
 
             PageResponse<CaseStudy> response = new PageResponse<>(
                     caseStudyPage.getContent(),
@@ -44,7 +51,12 @@ public class CaseStudyController {
 
             return ResponseEntity.ok(response);
         } else {
-            List<CaseStudy> caseStudies = caseStudyRepository.findAll(Sort.by("createdAt").descending());
+            List<CaseStudy> caseStudies;
+            if (divisionId != null) {
+                caseStudies = caseStudyRepository.findByDivisionId(divisionId);
+            } else {
+                caseStudies = caseStudyRepository.findAll(Sort.by("createdAt").descending());
+            }
             return ResponseEntity.ok(caseStudies);
         }
     }

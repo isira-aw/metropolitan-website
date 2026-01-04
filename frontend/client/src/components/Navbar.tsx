@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Building2, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { useDivisions } from "@/hooks/use-content";
+import { DIVISIONS } from "@/lib/constants";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,15 +13,13 @@ import {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
-  const { data: divisions } = useDivisions();
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/#vision" },
-    { label: "Solutions", href: "/#solutions" },
+    { label: "About", href: "/about" },
     { label: "News", href: "/news" },
     { label: "Careers", href: "/careers" },
-    { label: "Case Studies", href: "/blog" },
+    { label: "Case Studies", href: "/case-studies" },
   ];
 
   const isActive = (href: string) => {
@@ -59,7 +57,7 @@ export function Navbar() {
               Divisions <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
-              {divisions?.map((division) => (
+              {DIVISIONS.map((division) => (
                 <DropdownMenuItem key={division.id} asChild>
                   <Link href={`/divisions/${division.slug}`} className="w-full cursor-pointer">
                     {division.name}
@@ -99,9 +97,9 @@ export function Navbar() {
             ))}
             <div className="border-t pt-4">
               <p className="text-sm font-semibold text-muted-foreground mb-2 px-2">Divisions</p>
-              {divisions?.map((division) => (
-                <Link 
-                  key={division.id} 
+              {DIVISIONS.map((division) => (
+                <Link
+                  key={division.id}
                   href={`/divisions/${division.slug}`}
                   className="block text-sm p-2 hover:bg-secondary rounded-md"
                   onClick={() => setIsOpen(false)}

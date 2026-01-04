@@ -32,6 +32,9 @@ public class CaseStudy {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "division_id", nullable = false)
+    private Long divisionId;
+
     @Column(name = "project_manager_name")
     private String projectManagerName;
 
